@@ -2,7 +2,7 @@
 
 	<!-- COMMON_ARDUINO_APPLICATION {DC MOTOR CONTROL} -->
 	<node	pkg="rosserial_python" 
-		name="dc_motor_robot1_control" 
+		name="dc_motor_robot2_control" 
 		type="serial_node.py"> 
 		<!-- output="screen"> -->
 		
