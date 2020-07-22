@@ -55,3 +55,12 @@
     └── display_calculate_LED_stage.py
 
 ```
+
+Using an Arduino to communicate through ROS; *rosserial*. Each of the Arduino files (ino) required to be downloaded to the Arduino before
+rosserial can be used
+
+**NOTES**
+
+Please refer to these pages:
+1. http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup
+2. http://wiki.ros.org/rosserial
