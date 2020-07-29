@@ -1,0 +1,13 @@
+<launch>
+
+	<!-- COMMON_ARDUINO_APPLICATION {SERVO MOTOR CONTROL} (mate-pi) -->
+	<node	pkg="rosserial_python" 
+		name="servo_motor_robot1_control" 
+		type="serial_node.py"> 
+		<!-- output="screen"> -->
+		
+		<param name="port" value="/dev/ttyUSB1"/>
+		<param name="baud" value="57600"/>
+	</node>
+
+</launch>
