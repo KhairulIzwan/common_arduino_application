@@ -186,10 +186,7 @@ ros::NodeHandle nh;
 
 //put your setup code here, to run once:
 void setup()
-{
-  Serial2.begin(57600);
-  Serial3.begin(57600);
-  
+{ 
 //  Encoder Pins Pull-Up
   pinMode(ENCODER_COUNT_UP_A, INPUT_PULLUP);
   pinMode(ENCODER_COUNT_DOWN_A, INPUT_PULLUP);
