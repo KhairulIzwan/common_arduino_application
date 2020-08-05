@@ -1,0 +1,9 @@
+<launch>
+
+	<!-- COMMON_ARDUINO_APPLICATION {DC MOTOR ROBOT 2} -->
+	<include file="$(find common_arduino_application)/launch/dc_motor_robot2_control.launch"/>
+	
+	<!-- COMMON_ARDUINO_APPLICATION {SERVO MOTOR ROBOT 2} -->
+	<include file="$(find common_arduino_application)/launch/servo_motor_robot2_control.launch"/>
+
+</launch>
