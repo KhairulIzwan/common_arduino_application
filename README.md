@@ -4,6 +4,8 @@
 .
 ├── CMakeLists.txt
 ├── ino
+│   ├── accelerometer-_gyroscope_GY-521_node
+│   │   └── accelerometer-_gyroscope_GY-521_node.ino
 │   ├── Arduino_Multiple_Read_Write_I2C
 │   │   └── Arduino_Multiple_Read_Write_I2C.ino
 │   ├── ax12_blink
@@ -46,18 +48,25 @@
 │   ├── dc_motor_robot1_control.launch
 │   ├── dc_motor_robot2_control.launch
 │   ├── multiple_arduinoSBC.launch
+│   ├── robot1_motor_control.launch
+│   ├── robot2_motor_control.launch
+│   ├── roll_pitch_yaw.launch
 │   ├── servo_motor_control.launch
+│   ├── servo_motor_robot1_control.launch
+│   ├── servo_motor_robot2_control.launch
 │   └── twoArduino_serial.launch
 ├── package.xml
 ├── README.md
 └── script
     ├── display_calculate_LED.py
-    └── display_calculate_LED_stage.py
+    ├── display_calculate_LED_stage.py
+    └── rpy_reading.py
 
 ```
 
-Using an Arduino to communicate through ROS; *rosserial*. Each of the Arduino files (ino) required to be downloaded to the Arduino before
-rosserial can be used
+**Using an Arduino to communicate through ROS; *rosserial*. Each of the Arduino files (ino) required to be downloaded to the Arduino before rosserial can be used**
+
+**Each of ino file(s) serve different purpose**
 
 **NOTES**
 
