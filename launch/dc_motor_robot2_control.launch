@@ -10,6 +10,8 @@
 		<param name="baud" value="57600"/>
 
 		<remap from="/cmd_vel" to="/cmd_vel_robot2"/>
+		<remap from="/val_encLeft" to="/val_encLeft_robot2"/>
+		<remap from="/val_encRight" to="/val_encRight_robot2"/>
 	</node>
 
 </launch>
