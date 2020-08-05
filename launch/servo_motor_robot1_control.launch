@@ -8,6 +8,8 @@
 		
 		<param name="port" value="/dev/ttyUSB1"/>
 		<param name="baud" value="57600"/>
+		
+		<remap from="/cmd_vel" to="/cmd_vel_robot1"/>
 	</node>
 
 </launch>
