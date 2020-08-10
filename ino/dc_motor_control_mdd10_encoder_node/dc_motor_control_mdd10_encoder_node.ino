@@ -224,4 +224,5 @@ void loop()
   pub_encRight.publish(&encRight);
   
   nh.spinOnce();
+  delay(1);
 }
