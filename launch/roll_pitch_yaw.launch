@@ -1,8 +1,8 @@
 <launch>
 
-	<!-- COMMON_ARDUINO_APPLICATION {DC MOTOR CONTROL} -->
+	<!-- COMMON_ARDUINO_APPLICATION {MPU6050} -->
 	<node	pkg="rosserial_python" 
-		name="dc_motor_control" 
+		name="rpy_node" 
 		type="serial_node.py"> 
 		<!-- output="screen"> -->
 		
