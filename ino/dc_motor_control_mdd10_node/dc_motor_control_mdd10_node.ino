@@ -11,8 +11,8 @@
 #include <geometry_msgs/Twist.h>
 
 //Change according to the robot wheel dimension
-#define wheelSep 0.34 // in unit meter (m)
-#define wheelRadius 0.12; // in unit meter (m)
+#define wheelSep 0.325 // in unit meter (m)
+#define wheelRadius 0.127; // in unit meter (m)
 
 //Variables declaration
 float transVelocity;
@@ -28,17 +28,17 @@ float leftPWM;
 float rightPWM;
 
 //Motor Pin Assignment
-int DIRA = 4;
-int PWMA = 5;
-int DIRB = 12;
-int PWMB = 10;
+int DIRA = 8;
+int PWMA = 9;
+int DIRB = 13;
+int PWMB = 11;
 
 //Callback function for geometry_msgs::Twist
 void messageCb_cmd_vel(const geometry_msgs::Twist &msg)
 {
 //  Get the ros topic value
   transVelocity = msg.linear.x;
-  rotVelocity = 0;
+  rotVelocity = msg.angular.z;
   
 //  Differential Drive Kinematics
 //::http://www.cs.columbia.edu/~allen/F15/NOTES/icckinematics.pdf
@@ -53,13 +53,13 @@ void messageCb_cmd_vel(const geometry_msgs::Twist &msg)
   leftDutyCycle = (255 * leftVelocity) / 0.22;
   rightDutyCycle = (255 * rightVelocity) / 0.22;
 
-  rightDutyCycle = leftDutyCycle;
+//  rightDutyCycle = leftDutyCycle;
 
 //  Ensure DutyCycle is between minimum and maximum
-  leftPWM = clipPWM(abs(leftDutyCycle), 0, 255);
-  rightPWM = clipPWM(abs(rightDutyCycle), 0, 255);
+  leftPWM = clipPWM(abs(leftDutyCycle), 25, 255);
+  rightPWM = clipPWM(abs(rightDutyCycle), 25, 255);
 
-  rightPWM = leftPWM;
+//  rightPWM = leftPWM;
 
 //  motor directection helper function
   motorDirection();
@@ -86,38 +86,38 @@ void motorDirection()
 //  Forward
   if (leftDutyCycle > 0 and rightDutyCycle > 0)
   {
-    digitalWrite(DIRA, HIGH);
-    digitalWrite(DIRB, LOW);
+    digitalWrite(DIRA, LOW);
+    digitalWrite(DIRB, HIGH);
     analogWrite(PWMA, leftPWM);
     analogWrite(PWMB, rightPWM);
   }
 //  Backward
   else if (leftDutyCycle < 0 and rightDutyCycle < 0)
   {
-    digitalWrite(DIRA, LOW);
-    digitalWrite(DIRB, HIGH);
+    digitalWrite(DIRA, HIGH);
+    digitalWrite(DIRB, LOW);
     analogWrite(PWMA, leftPWM);
     analogWrite(PWMB, rightPWM);
   }
 /*
  * There is no turn left and right (not a differential drive mode)
  */
-////  Left
-//  else if (leftDutyCycle < 0 and rightDutyCycle > 0)
-//  {
-//    digitalWrite(DIRA, HIGH);
-//    digitalWrite(DIRB, HIGH);
-//    analogWrite(PWMA, leftPWM);
-//    analogWrite(PWMB, rightPWM);
-//  }
-////  Right
-//  else if (leftDutyCycle > 0 and rightDutyCycle < 0)
-//  {
-//    digitalWrite(DIRA, LOW);
-//    digitalWrite(DIRB, LOW);
-//    analogWrite(PWMA, leftPWM);
-//    analogWrite(PWMB, rightPWM);
-//  }
+//  Left
+  else if (leftDutyCycle < 0 and rightDutyCycle > 0)
+  {
+    digitalWrite(DIRA, LOW);
+    digitalWrite(DIRB, LOW);
+    analogWrite(PWMA, leftPWM);
+    analogWrite(PWMB, rightPWM);
+  }
+//  Right
+  else if (leftDutyCycle > 0 and rightDutyCycle < 0)
+  {
+    digitalWrite(DIRA, HIGH);
+    digitalWrite(DIRB, HIGH);
+    analogWrite(PWMA, leftPWM);
+    analogWrite(PWMB, rightPWM);
+  }
   else if (leftDutyCycle == 0 and rightDutyCycle == 0)
   {
     analogWrite(PWMA, 0);
