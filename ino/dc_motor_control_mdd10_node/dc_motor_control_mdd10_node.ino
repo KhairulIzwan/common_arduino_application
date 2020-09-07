@@ -28,10 +28,12 @@ float leftPWM;
 float rightPWM;
 
 //Motor Pin Assignment
-int DIRA = 8;
-int PWMA = 9;
-int DIRB = 13;
-int PWMB = 11;
+// Right
+int DIRA = 13;
+int PWMA = 11;
+//Left
+int DIRB = 8;
+int PWMB = 9;
 
 //Callback function for geometry_msgs::Twist
 void messageCb_cmd_vel(const geometry_msgs::Twist &msg)
@@ -86,16 +88,16 @@ void motorDirection()
 //  Forward
   if (leftDutyCycle > 0 and rightDutyCycle > 0)
   {
-    digitalWrite(DIRA, LOW);
-    digitalWrite(DIRB, HIGH);
+    digitalWrite(DIRA, HIGH);
+    digitalWrite(DIRB, LOW);
     analogWrite(PWMA, leftPWM);
     analogWrite(PWMB, rightPWM);
   }
 //  Backward
   else if (leftDutyCycle < 0 and rightDutyCycle < 0)
   {
-    digitalWrite(DIRA, HIGH);
-    digitalWrite(DIRB, LOW);
+    digitalWrite(DIRA, LOW);
+    digitalWrite(DIRB, HIGH);
     analogWrite(PWMA, leftPWM);
     analogWrite(PWMB, rightPWM);
   }
