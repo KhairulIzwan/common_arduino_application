@@ -23,7 +23,7 @@ void messageCb_pump0(const std_msgs::Bool &msg)
   if (msg.data == true)
   {
     analogWrite(pwm0_Pump0, 0);
-    analogWrite(pwm1_Pump0, 100);
+    analogWrite(pwm1_Pump0, 10);
   }
   else
   {
@@ -37,7 +37,7 @@ void messageCb_pump1(const std_msgs::Bool &msg)
   if (msg.data == true)
   {
     analogWrite(pwm0_Pump1, 0);
-    analogWrite(pwm1_Pump1, 100);
+    analogWrite(pwm1_Pump1, 10);
   }
   else
   {
